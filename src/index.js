@@ -11,6 +11,7 @@ import {
   Link,
   Outlet,
   useParams,
+  NavLink,
 } from 'react-router-dom';
 
 ReactDOM.render(
@@ -59,10 +60,19 @@ function Learn() {
 }
 
 function Courses() {
+  const courseList = ['React', 'Angular', 'Vue', 'Nodejs'];
+  const randomCourseName =
+    courseList[Math.floor(Math.random() * courseList.length)];
+
   return (
     <div>
       <h1>Courses list</h1>
       <h4>Courses card</h4>
+
+      <p>More test</p>
+      <NavLink to={`/learn/courses/${randomCourseName}`}>
+        {randomCourseName}
+      </NavLink>
 
       <Outlet />
     </div>
