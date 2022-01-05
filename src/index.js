@@ -113,6 +113,9 @@ function CourseId() {
       >
         Price
       </button>
+      <Link to="/dashboard" state={'DJANGO'}>
+        test link
+      </Link>
     </div>
   );
 }
