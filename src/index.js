@@ -70,8 +70,18 @@ function Courses() {
       <h4>Courses card</h4>
 
       <p>More test</p>
-      <NavLink to={`/learn/courses/${randomCourseName}`}>
+      <NavLink
+        style={({ isActive }) => {
+          return {
+            backgroundColor: isActive ? 'pink' : 'yellow',
+          };
+        }}
+        to={`/learn/courses/${randomCourseName}`}
+      >
         {randomCourseName}
+      </NavLink>
+      <NavLink className="btn" to={`/learn/courses/tests`}>
+        tests
       </NavLink>
 
       <Outlet />
