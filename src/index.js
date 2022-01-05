@@ -10,6 +10,7 @@ import {
   Navigate,
   Link,
   Outlet,
+  useParams,
 } from 'react-router-dom';
 
 ReactDOM.render(
@@ -22,7 +23,9 @@ ReactDOM.render(
       {/* Adding the replace keyword isn't laying anything on top of it... just use it*/}
       <Route path="/myapps" element={<Navigate to="/learn" />} />
       <Route path="/learn" element={<Learn />}>
-        <Route path="courses" element={<Courses />} />
+        <Route path="courses" element={<Courses />}>
+          <Route path=":courseid" element={<CourseId />} />
+        </Route>
         <Route path="bundles" element={<Bundles />} />
       </Route>
     </Routes>
@@ -60,6 +63,8 @@ function Courses() {
     <div>
       <h1>Courses list</h1>
       <h4>Courses card</h4>
+
+      <Outlet />
     </div>
   );
 }
@@ -68,6 +73,14 @@ function Bundles() {
     <div>
       <h1>Bundle list</h1>
       <h4>Bundle card</h4>
+    </div>
+  );
+}
+function CourseId() {
+  const { courseid } = useParams();
+  return (
+    <div>
+      <h1>URL Params is : {courseid}</h1>
     </div>
   );
 }
