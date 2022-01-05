@@ -12,6 +12,8 @@ import {
   Outlet,
   useParams,
   NavLink,
+  useNavigate,
+  useLocation,
 } from 'react-router-dom';
 
 ReactDOM.render(
@@ -29,6 +31,7 @@ ReactDOM.render(
         </Route>
         <Route path="bundles" element={<Bundles />} />
       </Route>
+      <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
   </Router>,
   document.getElementById('root')
@@ -97,10 +100,27 @@ function Bundles() {
   );
 }
 function CourseId() {
+  const navigate = useNavigate();
   const { courseid } = useParams();
   return (
     <div>
       <h1>URL Params is : {courseid}</h1>
+      <button
+        onClick={() => {
+          navigate('/dashboard', { state: courseid });
+        }}
+        className="btn"
+      >
+        Price
+      </button>
+    </div>
+  );
+}
+function Dashboard() {
+  const location = useLocation();
+  return (
+    <div>
+      <h1>Here is the info that I got {location.state}</h1>
     </div>
   );
 }
