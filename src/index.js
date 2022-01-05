@@ -9,6 +9,7 @@ import {
   Route,
   Navigate,
   Link,
+  Outlet,
 } from 'react-router-dom';
 
 ReactDOM.render(
@@ -49,6 +50,7 @@ function Learn() {
       <Link className="btn text-white" to="/learn/bundles">
         bundle
       </Link>
+      <Outlet />
     </div>
   );
 }
